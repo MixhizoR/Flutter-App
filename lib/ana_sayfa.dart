@@ -11,20 +11,48 @@ class _AnaSayfaState extends State<AnaSayfa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Merhaba Dünya"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _onPressed,
-        child: Icon(Icons.add),
-      ),
-      body: Center(
-        child: Text(_sayac.toString()),
-      ),
-    );
+        appBar: AppBar(),
+        body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Image(image: AssetImage("assets/cat.webp")),
+            Text("Yildizimi cko svym⭐"),
+            Text(_sayac.toString()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _sayac--;
+                      });
+                    },
+                    child: Icon(Icons.remove),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10,
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.black,
+                        shape: StarBorder())),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _sayac++;
+                      });
+                    },
+                    child: Icon(Icons.add),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10,
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.black,
+                        shape: StarBorder())),
+              ],
+            )
+          ]),
+        ));
   }
 
-  void _onPressed(){
-    setState(() => _sayac++);
+  void onPressed() {
+    setState(() {
+      _sayac++;
+    });
   }
 }
